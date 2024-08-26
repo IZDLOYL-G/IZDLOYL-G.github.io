@@ -345,9 +345,9 @@
     
     
     <entry>
-      <title>link</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -359,6 +359,17 @@
       <title>照片</title>
       <link href="/gallery/index.html"/>
       <url>/gallery/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>link</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -381,17 +392,6 @@
       <title>电影</title>
       <link href="/movies/index.html"/>
       <url>/movies/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
