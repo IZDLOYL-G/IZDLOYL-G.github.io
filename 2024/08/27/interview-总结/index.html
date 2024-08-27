@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>IZDLOYL's Blog | IZDLOYL's Blog</title><meta name="author" content="IZDLOYL"><meta name="copyright" content="IZDLOYL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="项目图享汇1、登录注册 使用slideCaptcha完成滑动验证  原理：将用户拖动行为的时间、精度，滑动轨迹等信息到服务器，然后进行后台算法验证。 过程：首先在人类行为验证组件完成对应UI样式，在组件挂载（onMounted）时初始化并配置一个滑动验证码（sliderCaptcha），并指定处理成功、失败的回调函数，在用户拼图成功这个回调中，通过调用 getCaptcha 方法发送行为数据给后端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IZDLOYL&#39;s Blog">
+<meta property="og:url" content="http://www.izdloyl.cn/2024/08/27/interview-%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="IZDLOYL&#39;s Blog">
+<meta property="og:description" content="项目图享汇1、登录注册 使用slideCaptcha完成滑动验证  原理：将用户拖动行为的时间、精度，滑动轨迹等信息到服务器，然后进行后台算法验证。 过程：首先在人类行为验证组件完成对应UI样式，在组件挂载（onMounted）时初始化并配置一个滑动验证码（sliderCaptcha），并指定处理成功、失败的回调函数，在用户拼图成功这个回调中，通过调用 getCaptcha 方法发送行为数据给后端">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://source.fomal.cc/img/default_cover_6.webp">
+<meta property="article:published_time" content="2024-08-27T12:58:34.417Z">
+<meta property="article:modified_time" content="2024-08-27T12:58:20.419Z">
+<meta property="article:author" content="IZDLOYL">
+<meta property="article:tag" content="Blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://source.fomal.cc/img/default_cover_6.webp"><link rel="shortcut icon" href="/gallery/favicon.jpg"><link rel="canonical" href="http://www.izdloyl.cn/2024/08/27/interview-%E6%80%BB%E7%BB%93/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'IZDLOYL\'s Blog',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-08-27 20:58:20'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/gallery/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://source.fomal.cc/img/default_cover_6.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="IZDLOYL's Blog"><span class="site-name">IZDLOYL's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-08-27T12:58:34.417Z" title="发表于 2024-08-27 20:58:34">2024-08-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-27T12:58:20.419Z" title="更新于 2024-08-27 20:58:20">2024-08-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1><h2 id="图享汇"><a href="#图享汇" class="headerlink" title="图享汇"></a>图享汇</h2><h3 id="1、登录注册"><a href="#1、登录注册" class="headerlink" title="1、登录注册"></a>1、登录注册</h3><ul>
+<li>使用<code>slideCaptcha</code>完成滑动验证</li>
+</ul>
+<p>原理：将用户拖动行为的时间、精度，滑动轨迹等信息到服务器，然后进行后台算法验证。</p>
+<p>过程：首先在人类行为验证组件完成对应<code>UI</code>样式，在组件挂载（<code>onMounted</code>）时初始化并配置一个滑动验证码（<code>sliderCaptcha</code>），并指定处理成功、失败的回调函数，在用户拼图成功这个回调中，通过调用 <code>getCaptcha</code> 方法发送行为数据给后端进行进一步的验证</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; getCaptcha &#125; <span class="keyword">from</span> <span class="string">&#x27;@/api/sys&#x27;</span></span><br><span class="line"><span class="title function_">onMounted</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  captcha = <span class="title function_">sliderCaptcha</span>(&#123;</span><br><span class="line">    <span class="attr">id</span>: <span class="string">&#x27;captcha&#x27;</span>, <span class="comment">// 渲染位置</span></span><br><span class="line">    <span class="comment">// 用户拼图成功之后的回调</span></span><br><span class="line">    <span class="keyword">async</span> <span class="title function_">onSuccess</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">getCaptcha</span>(&#123;</span><br><span class="line">        <span class="attr">behavior</span>: arr</span><br><span class="line">        <span class="keyword">if</span> (res) &#123; <span class="comment">// 人类行为验证通过</span></span><br><span class="line">          <span class="title function_">emits</span>(<span class="variable constant_">EMITS_SUCCESS</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 用户拼图失败之后的回调</span></span><br><span class="line">    <span class="title function_">onFail</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;onFail&#x27;</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 默认的验证方法，咱们不在此处进行验证，而是选择在用户拼图成功之后进行验证，所以此处永远返回为 true</span></span><br><span class="line">    <span class="title function_">verify</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>实现第三方<code>QQ</code>、微信扫码登录。</li>
+</ul>
+<p><code>OAuth</code> 的思路：<code>OAuth</code>是一个关于授权（<code>authorization</code>）的开放网络标准。<span style="color: #bfa"><strong>应用通过引导用户在第三方平台的授权层进行登录授权，获得一个限制权限和有效时间的令牌（token），在令牌有效期内即可从第三方平台换取用户授权使用的信息</strong></span>。</p>
+<p>客户端授权模式：授权码模式、简化模式、密码模式、客户端模式。</p>
+<p><strong><em>授权码模式</em></strong> 是功能最完整、流程最严密的授权模式。基于授权码模式的第三方登录流程如下：</p>
+<ol>
+<li>用户访问应用，点击登录按钮，跳转至第三方平台的登录授权页。</li>
+<li>用户授权成功后会跳转至应用在第三方平台设置的回调地址，并携带授权码（<code>code</code>）。</li>
+<li>应用服务器处理从第三方平台的登录授权页跳转至回调地址产生的<code>get</code>请求并从<code>query</code>中获得授权码，使用授权码和其他信息（比如应用在第三方平台注册的<code>appId</code>和<code>appKey</code>，设置的回调地址等）向第三方平台请求访问令牌（<code>access token</code>）。</li>
+<li>在访问令牌的有效期内，应用服务器请求第三方平台接口获取用户的身份标识（<code>openid</code>、<code>unionid</code>等）和用户授权使用的信息（比如用户昵称和头像等开放信息）。</li>
+<li>应用服务器根据获取的用户信息，完成注册登录的逻辑并跳转至应用首页。</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="E:\我的\秋招\img\1724741225579.jpg" alt=""></p>
+<p><strong>QQ登录流程</strong>：【扫码登录之后，进入的地址为<strong>线上的回调地址</strong>，调试必须在线上进行】</p>
+<ol>
+<li><p>点击<code>QQ</code>登录按钮触发事件，进入第三方登录页（<code>window.open</code>）展示 <code>QQ</code> 登录二维码</p>
+</li>
+<li><p>获取用户信息：在执行<code>QQ</code>挂起登录时，由于<code>QQ</code>登录存在缓存，为防止下次进入时自动重新登录，在离开登录页面时，注销登录；获取当前用户唯一标识，作为判断用户是否已注册的依据，将获得的用户信息进行跨页面传输。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// QQ 登录挂起</span></span><br><span class="line"><span class="title function_">onMounted</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable constant_">QC</span>.<span class="title class_">Login</span>(</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">btnId</span>: <span class="string">&#x27;qqLoginBtn&#x27;</span> <span class="comment">//插入按钮的节点id</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 登录成功之后的回调，但是需要注意，这个回调只会在《登录回调页面中被执行》</span></span><br><span class="line">    <span class="comment">// 登录存在缓存，登录成功一次之后，下次进入会自动重新登录（即：触发该方法，所以我们应该在离开登录页面时，注销登录）</span></span><br><span class="line">    <span class="function">(<span class="params">data, opts</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable constant_">QC</span>.<span class="property">Login</span>.<span class="title function_">signOut</span>() <span class="comment">// 1. 注销登录，否则在后续登录中会直接触发该回调</span></span><br><span class="line">      <span class="comment">// 2. 获取当前用户唯一标识，作为判断用户是否已注册的依据</span></span><br><span class="line">      <span class="keyword">const</span> accessToken = <span class="regexp">/access_token=((.*))&amp;expires_in/</span>.<span class="title function_">exec</span>(</span><br><span class="line">        <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">hash</span></span><br><span class="line">      )[<span class="number">1</span>]</span><br><span class="line">      <span class="comment">// 3. 拼接请求对象</span></span><br><span class="line">      <span class="keyword">const</span> oauthObj = &#123;</span><br><span class="line">        <span class="attr">nickname</span>: data.<span class="property">nickname</span>,</span><br><span class="line">        <span class="attr">figureurl_qq_2</span>: data.<span class="property">figureurl_qq_2</span>,</span><br><span class="line">        accessToken</span><br><span class="line">      &#125;</span><br><span class="line">      broadcast.<span class="title function_">send</span>(oauthObj)<span class="comment">// 4. 完成跨页面传输</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// 针对于 移动端而言：通过移动端触发 QQ 登录会展示三个页面，原页面、QQ 吊起页面、回调页面。并且移动端一个页面展示整屏内容，且无法直接通过 window.close() 关闭，所以在移动端中，我们需要在当前页面继续进行后续操作。</span></span><br><span class="line">      <span class="title function_">oauthLogin</span>(<span class="variable constant_">LOGIN_TYPE_QQ</span>, oauthObj)</span><br><span class="line">      <span class="variable language_">window</span>.<span class="title function_">close</span>() <span class="comment">// 5. 在 PC 端下，关闭第三方窗口</span></span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完成跨页面数据传输：</p>
+</li>
+<li><p>认证是否已注册</p>
+</li>
+<li><p>完成 <code>QQ</code> 对接</p>
+</li>
+</ol>
+<p><strong>微信登录流程</strong>：</p>
+<ol>
+<li><p>通过 <strong>微信登录前置数据获取</strong> 接口，获取登录数据（比如 <code>APP ID</code>）</p>
+</li>
+<li><p>根据获取到的数据，拼接得到 <code>open url</code> 地址</p>
+</li>
+<li><p>打开该地址，展示微信登录二维码</p>
+</li>
+<li><p>移动端微信扫码确定登录</p>
+</li>
+<li><p>从当前窗口中解析 <code>window.location.search</code> 得到用户的 <code>code</code> 数据</p>
+</li>
+<li><p>根据 <code>appId、appSecret、code</code> 通过接口获取用户的 <code>access_token</code></p>
+</li>
+<li><p>根据 <code>access_token</code> 获取用户信息</p>
+</li>
+<li><p>通过用户信息触发 <code>oauthLogin</code> 方法</p>
+</li>
+</ol>
+<h3 id="2、axios二次封装"><a href="#2、axios二次封装" class="headerlink" title="2、axios二次封装"></a>2、<code>axios</code>二次封装</h3><p>在请求拦截器中设置接口基础地址、超时时间、登录成功后请求头携带<code>token</code>，响应拦截器做异常处理。</p>
+<h3 id="3、组件封装"><a href="#3、组件封装" class="headerlink" title="3、组件封装"></a>3、组件封装</h3><p>封装了包括瀑布流、上拉加载等通用组件，用于改善用户界面的流畅性和响应速度，提升了整体用户体验。</p>
+<p>小红书首页布局：<strong>瀑布流和虚拟列表的结合</strong></p>
+<ul>
+<li><strong><em>瀑布流组件：</em></strong></li>
+</ul>
+<ol>
+<li><p>瀑布流的核心就是：通过<code>relative</code> 和<code>absolute</code>定位的方式，来控制每个 <code>item</code> 的位置</p>
+</li>
+<li><p>影响瀑布流高度的主要元素，通常都是<code>img</code>标签</p>
+</li>
+<li><p>有些服务端会返回<strong>关键<code>img</code>的高度</strong>，有些不会，所以需要分别处理：</p>
+<ul>
+<li>当服务端<strong>不返回</strong>高度时：需要等待 <code>img</code> 加载完成之后(预加载)，再来计算高度，然后通过得到的高度计算定位。否则则会出现高度计算不准确导致定位计算不准确的问题。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>当服务端<strong>返回</strong>高度时：开发者则必须利用此高度为 <code>item</code> 进行高度设定。一旦 <code>item</code>具备指定高度，那么就不需要等待 <code>img</code>加载的过程，这样效率更高，并且可以业务的逻辑会变得更加简单。</li>
+</ul>
+<ol>
+<li><p>当进行响应式切换时，同样需要区分对应场景：</p>
+<ul>
+<li><p>当服务端<strong>不返回</strong>高度时：需要<strong>重新执行整个渲染流程</strong>，虽然会耗费一些性能，但可以最大可能的避免出现逻辑错误。让组件拥有更强的普适性。</p>
+</li>
+<li><p>当服务端<strong>返回</strong>高度时：同样需要重新计算<strong>列宽</strong>和<strong>定位</strong>，但因为 <code>item</code>具备明确的高度，所以可以直接拿到具体的高度，而无需重复整个渲染流程，从而可以实现更多的交互逻辑。比如：位移动画、将来的图片懒加载占位…</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>1、瀑布流布局的核心实现思想：</p>
+<ol>
+<li><strong>控制容器内每一列卡片的宽度相同</strong>（不同图片尺寸等比例缩放）</li>
+<li>第一行卡片紧挨着排列，<strong>第二行开始采取贪心思想，每张卡片摆放到当前所有列中高度最小的一列下面</strong></li>
+</ol>
+<p>图片尺寸信息在瀑布流实现中是必须要获取到的，需要用到<strong>图片预加载</strong>（【提前访问图片链接进行加载操作但不展示在视图上，后续使用该链接后图片会从缓存中加载而不是向服务器请求】：好处就是用户看到的图片是直接从缓存进行加载的速度很快，坏处就是刚开始等待所有图片加载会很慢）技术。</p>
+<ul>
+<li><strong><em>上拉加载：</em></strong>当滚动到列表底部时，加载数据</li>
+</ul>
+<p>构建<code>props</code>传递<code>是否处于加载状态</code>和<code>是否全部加载完成</code>配置，加载下一页数据的触发事件，处理双向数据绑定逻辑，利用<code>vueuse</code>提供的 <a target="_blank" rel="noopener" href="https://vueuse.org/core/useIntersectionObserver/">useIntersectionObserver</a> 方法，监听元素可见行为，用于判断列表滚动到底部</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> laodingTarget = <span class="title function_">ref</span>(<span class="literal">null</span>) <span class="comment">// 滚动的元素</span></span><br><span class="line"><span class="title function_">useIntersectionObserver</span>(laodingTarget, <span class="function">(<span class="params">[&#123; isIntersecting &#125;]</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 当加载更多的视图可见时，同时 loading 为 false，同时 数据尚未全部加载完</span></span><br><span class="line">    <span class="comment">// 处理加载更多的逻辑</span></span><br><span class="line">    <span class="keyword">if</span>(isIntersecting &amp;&amp; !loading.<span class="property">value</span> &amp;&amp; !props.<span class="property">isFinished</span>)&#123;</span><br><span class="line">        loading.<span class="property">value</span> = <span class="literal">true</span> <span class="comment">// 修改加载数据标记</span></span><br><span class="line">        <span class="title function_">emits</span>(<span class="string">&#x27;onLoad&#x27;</span>) <span class="comment">// 触发加载更多行为</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="4、懒加裁"><a href="#4、懒加裁" class="headerlink" title="4、懒加裁"></a>4、懒加裁</h3><p>使用<code>uselntersectionObserver</code>和<code>AsyncComponent</code>分别实现图片和组件的懒加裁，确保首屏加载速度。</p>
+<ul>
+<li><strong>图片懒加载</strong>：当图片不可见时，不加载图片。当图片可见时，才去加载图片。</li>
+</ul>
+<p><strong>可以监听所有图片是否被可见，如果图片处于不可见状态，那么就不加载图片，如果图片处于可见状态，那么开始加载图片。</strong>而这个功能的实现关键就是 <strong><code>IntersectionObserver</code></strong>。</p>
+<p><code>vueuse</code>包提供的<code>useIntersectionObserver</code>方法：<code>const &#123;stop&#125; = useIntersectionObserver(target, fn, options)</code></p>
+<ol>
+<li><code>target</code>表示被监听的<code>DOM</code>元素</li>
+<li>参数二是回调函数，用于通知监听的动作（回调函数的第一个形参<code>isIntersecting</code>表示被监听的元素已经进入了可视区）</li>
+<li>参数三 表示配置选项</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> useIntersectionObserver <span class="keyword">from</span> <span class="string">&#x27;@vueuse/core&#x27;</span></span><br><span class="line"><span class="comment">// 处理图片懒加载</span></span><br><span class="line"><span class="comment">// 1、在元素挂载到页面中的钩子函数中、保存img的src</span></span><br><span class="line"><span class="comment">// 2、将img的src属性置为 空 或者置位默认图片</span></span><br><span class="line"><span class="comment">// 3、监听图片是否在可视范围内？ 在可视范围内将img保存在src重新复制到img上 并 取消监听</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">mounted</span>(<span class="params">el</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> imgSrc = el.<span class="property">src</span> <span class="comment">// 1、拿到当前 img 标签的 src</span></span><br><span class="line">    el.<span class="property">src</span> = <span class="string">&#x27;&#x27;</span> <span class="comment">// 2、将img的src属性置为 空 或者置位默认图片</span></span><br><span class="line">    <span class="comment">//  3、监听图片是否在可视范围内</span></span><br><span class="line">    <span class="keyword">const</span> &#123; stop &#125; = <span class="title function_">useIntersectionObserver</span>(el, <span class="function">(<span class="params">&#123; isIntersecting &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (isIntersecting) &#123;</span><br><span class="line">        el.<span class="property">src</span> = imgSrc <span class="comment">// 3. 当图片可见时,加载图片</span></span><br><span class="line">        <span class="title function_">stop</span>() <span class="comment">// 4. 停止监听</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>组件懒加载</li>
+</ul>
+<p><code>defineAsyncComponent</code> 方法接收一个返回<code>Promise</code>的加载函数。这个<code>Promise</code>的 <code>resolve</code> 回调方法应该在从服务器获得组件定义时调用。也可以调用 <code>reject(reason)</code> 表明加载失败。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自动化注册组件</span></span><br><span class="line"><span class="keyword">import</span> &#123; defineAsyncComponent &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">export</span> &#123; confirm &#125; <span class="keyword">from</span> <span class="string">&#x27;./confirm/index&#x27;</span></span><br><span class="line"><span class="keyword">export</span> &#123; message &#125; <span class="keyword">from</span> <span class="string">&#x27;./message&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出对象、这个对象有install方法，这样既可以通过app.use(options)来使用</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">install</span>(<span class="params">app</span>) &#123;</span><br><span class="line">    <span class="comment">// 1、获取当前路径下所有文件夹中以index.vue结尾的文件</span></span><br><span class="line">    <span class="keyword">const</span> components = <span class="keyword">import</span>.<span class="property">meta</span>.<span class="title function_">glob</span>(<span class="string">&#x27;./*/index.vue&#x27;</span>)</span><br><span class="line">    <span class="comment">// 2、遍历获取到的组件模块：利用path生成组件名称, defineAsyncComponent生成动态组件</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> [path, fn] <span class="keyword">of</span> <span class="title class_">Object</span>.<span class="title function_">entries</span>(components)) &#123; <span class="comment">// path: ./popup/index.vue</span></span><br><span class="line">      <span class="comment">// 根据路径动态生成组件名称</span></span><br><span class="line">      <span class="keyword">const</span> componentName = <span class="string">&#x27;m-&#x27;</span> +  path.<span class="title function_">replace</span>(<span class="string">&#x27;./&#x27;</span>, <span class="string">&#x27;&#x27;</span>).<span class="title function_">split</span>(<span class="string">&#x27;/&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">      <span class="comment">// 3、利用 app.component 将生成的组件名称和对应的异步组件注册到 Vue 应用上。使用 defineAsyncComponent 包装每个组件，这样组件会在第一次被使用时才加载，实现了组件的懒加载</span></span><br><span class="line">      app.<span class="title function_">component</span>(componentName, <span class="title function_">defineAsyncComponent</span>(fn))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5、防抖搜索优化"><a href="#5、防抖搜索优化" class="headerlink" title="5、防抖搜索优化"></a>5、防抖搜索优化</h3><p>对输入框搜索功能实现防抖封装，减少了频繁请求，优化了页面性能和用户体验。</p>
+<p>防抖主要用于减少频繁触发的事件处理次数，避免资源浪费和性能问题</p>
+<p>防抖的核心思想：当触发一个事件时，不去立刻执行，而是延迟一段时间，该事件变为等待执行事件。如果在这段时间之内，该事件被再次触发，则上次等待执行的事件取消，本次触发的事件变为等待执行事件。循环往复，直到某一个等待事件被执行为止</p>
+<p>项目中搜索提示组件是通过 <code>watch</code> 监听输入内容的变化，所以当输入内容发生变化时，就会立刻触发 <code>getHintData</code> 事件。此时需要做防抖处理， <code>vueuse</code> 中提供了对应的 <a target="_blank" rel="noopener" href="https://vueuse.org/shared/watchDebounced/">watchDebounced</a> ，可以直接利用这个 <code>API</code> 直接实现防抖的<code>watch</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; getHint &#125; <span class="keyword">from</span> <span class="string">&#x27;@/api/pexels&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; ref, watch &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; watchDebounced &#125; <span class="keyword">from</span> <span class="string">&#x27;@vueuse/core&#x27;</span></span><br><span class="line">......</span><br><span class="line"><span class="comment">// 监听搜索文本的变化，并获取对应提示数据</span></span><br><span class="line"><span class="title function_">watchDebounced</span>(<span class="function">() =&gt;</span> props.<span class="property">searchText</span>, getHintData, &#123;</span><br><span class="line">  <span class="attr">immediate</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">debounce</span>: <span class="number">500</span> <span class="comment">// 每次事件触发时，延迟的时间</span></span><br><span class="line">&#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="移动端适配"><a href="#移动端适配" class="headerlink" title="移动端适配"></a>移动端适配</h3><h2 id="人力资源后台项目"><a href="#人力资源后台项目" class="headerlink" title="人力资源后台项目"></a>人力资源后台项目</h2><h3 id="1、权限"><a href="#1、权限" class="headerlink" title="1、权限"></a>1、权限</h3><p>使用<code>vue-router</code>配置路由切换视图，在权限模块中基于<code>RBAC</code>权限模型实现动态添加路由规则，完成不同角色的权限分配。</p>
+<h3 id="2、vuex管理"><a href="#2、vuex管理" class="headerlink" title="2、vuex管理"></a>2、<code>vuex</code>管理</h3><p>在<code>vuex</code>中对<code>token</code>进行管理，将用户的<code>token</code>状态共享，实现后续高效目方便的读取。</p>
+<h3 id="3、excel导入导出"><a href="#3、excel导入导出" class="headerlink" title="3、excel导入导出"></a>3、<code>excel</code>导入导出</h3><p>使用FileSaver.js第三方库实现员工信息excel文件的导入导出。</p>
+<h3 id="4、递归列表转树"><a href="#4、递归列表转树" class="headerlink" title="4、递归列表转树"></a>4、递归列表转树</h3><p>使用递归算法将组织架构的树形组件中的列表型数犯转换为树形结构。</p>
+<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><p>熟悉使用JavaScript、ES6 新特性</p>
+<h1 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h1><p>熟悉使用 vue框架，vue-router、vuex、 create-vue脚手架进行MVVM设计模式下的页面搭建，前后端数据交互</p>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><p>熟悉使用 HTML、CSS 等技术，掌握 HTML5、CSS3 新特性，弹性盒子布局模式等前端Web开发技术</p>
+<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h1 id="计算机基础与网络"><a href="#计算机基础与网络" class="headerlink" title="计算机基础与网络"></a>计算机基础与网络</h1><h1 id="Webpack与vite"><a href="#Webpack与vite" class="headerlink" title="Webpack与vite"></a>Webpack与vite</h1><p>了解webpack、vite 打包工具、依赖包管理器npm，了解基本配置</p>
+<h1 id="node"><a href="#node" class="headerlink" title="node"></a>node</h1></article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h></h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="http://www.izdloyl.cn/2024/08/27/interview-%E6%80%BB%E7%BB%93/">http://www.izdloyl.cn/2024/08/27/interview-%E6%80%BB%E7%BB%93/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>IZDLOYL</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2024-08-27</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2024-08-27</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://source.fomal.cc/img/default_cover_6.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/08/23/frontEnd-nodejs/" title="node"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_4.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">node</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/gallery/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">IZDLOYL</div><div class="author-info__description">个人博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/IZDLOYL-G"><i class="fab fa-github"></i><span>🛴前往小家...</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/IZDLOYL-G" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1215472755@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #dfc600;"></i></a><a class="social-icon" href="https://res.abeim.cn/api/qq/?qq=1174008660" target="_blank" title="Weixin"><i class="fab fa-weixin" style="color: #48b700;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">welcome to my blog!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE"><span class="toc-text">项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E4%BA%AB%E6%B1%87"><span class="toc-text">图享汇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C"><span class="toc-text">1、登录注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81axios%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85"><span class="toc-text">2、axios二次封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85"><span class="toc-text">3、组件封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%87%92%E5%8A%A0%E8%A3%81"><span class="toc-text">4、懒加裁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E9%98%B2%E6%8A%96%E6%90%9C%E7%B4%A2%E4%BC%98%E5%8C%96"><span class="toc-text">5、防抖搜索优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D"><span class="toc-text">移动端适配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E5%90%8E%E5%8F%B0%E9%A1%B9%E7%9B%AE"><span class="toc-text">人力资源后台项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%9D%83%E9%99%90"><span class="toc-text">1、权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81vuex%E7%AE%A1%E7%90%86"><span class="toc-text">2、vuex管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA"><span class="toc-text">3、excel导入导出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E9%80%92%E5%BD%92%E5%88%97%E8%A1%A8%E8%BD%AC%E6%A0%91"><span class="toc-text">4、递归列表转树</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript"><span class="toc-text">JavaScript</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vue"><span class="toc-text">vue</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS"><span class="toc-text">CSS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML"><span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E4%B8%8E%E7%BD%91%E7%BB%9C"><span class="toc-text">计算机基础与网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Webpack%E4%B8%8Evite"><span class="toc-text">Webpack与vite</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#node"><span class="toc-text">node</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/08/27/interview-%E6%80%BB%E7%BB%93/" title="无题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_6.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/08/27/interview-%E6%80%BB%E7%BB%93/" title="无题">无题</a><time datetime="2024-08-27T12:58:34.417Z" title="发表于 2024-08-27 20:58:34">2024-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/23/frontEnd-nodejs/" title="node"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_4.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="node"/></a><div class="content"><a class="title" href="/2024/08/23/frontEnd-nodejs/" title="node">node</a><time datetime="2024-08-23T08:14:35.116Z" title="发表于 2024-08-23 16:14:35">2024-08-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/23/frontEnd-JavaScript/" title="JS基本语法"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/gallery/wallpaper.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JS基本语法"/></a><div class="content"><a class="title" href="/2024/08/23/frontEnd-JavaScript/" title="JS基本语法">JS基本语法</a><time datetime="2024-08-23T08:06:33.574Z" title="发表于 2024-08-23 16:06:33">2024-08-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/23/frontEnd-TypeScript/" title="TypeScript"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_9.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TypeScript"/></a><div class="content"><a class="title" href="/2024/08/23/frontEnd-TypeScript/" title="TypeScript">TypeScript</a><time datetime="2024-08-23T08:06:10.608Z" title="发表于 2024-08-23 16:06:10">2024-08-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/19/project-%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%AD%EF%BC%89/" title="前中台解决方案项目（中）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_6.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前中台解决方案项目（中）"/></a><div class="content"><a class="title" href="/2024/08/19/project-%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%AD%EF%BC%89/" title="前中台解决方案项目（中）">前中台解决方案项目（中）</a><time datetime="2024-08-19T06:41:18.496Z" title="发表于 2024-08-19 14:41:18">2024-08-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By IZDLOYL</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hope you have a nice day!🍭🍭🍭</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="30" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="http://www.izdloyl.cn/categories/项目/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🎮 IZDLOYLの项目 (4)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="http://www.izdloyl.cn/categories/算法/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🐱 IZDLOYLの算法笔记 (7)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="http://www.izdloyl.cn/categories/vue/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👩‍💻 IZDLOYLの编程学习 (2)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="http://www.izdloyl.cn/categories/面试/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💡 IZDLOYLの面试总结 (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><a class="magnet_link_more"  href="http://www.izdloyl.cn/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #69e8f2}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/08/23/frontEnd-JavaScript/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/gallery/wallpaper.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-23</span><a class="blog-slider__title" href="2024/08/23/frontEnd-JavaScript/" alt="">JS基本语法</a><div class="blog-slider__text">前端学习笔记</div><a class="blog-slider__button" href="2024/08/23/frontEnd-JavaScript/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/08/23/frontEnd-TypeScript/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_9.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-23</span><a class="blog-slider__title" href="2024/08/23/frontEnd-TypeScript/" alt="">TypeScript</a><div class="blog-slider__text">前端学习笔记</div><a class="blog-slider__button" href="2024/08/23/frontEnd-TypeScript/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/08/01/frontEnd-vue3/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_10.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-01</span><a class="blog-slider__title" href="2024/08/01/frontEnd-vue3/" alt="">vue3</a><div class="blog-slider__text">vue3学习笔记</div><a class="blog-slider__button" href="2024/08/01/frontEnd-vue3/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/08/23/frontEnd-nodejs/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_4.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-23</span><a class="blog-slider__title" href="2024/08/23/frontEnd-nodejs/" alt="">node</a><div class="blog-slider__text">前端学习笔记</div><a class="blog-slider__button" href="2024/08/23/frontEnd-nodejs/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/08/01/frontEnd-vue2/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_9.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-01</span><a class="blog-slider__title" href="2024/08/01/frontEnd-vue2/" alt="">vue2</a><div class="blog-slider__text">vue2学习笔记</div><a class="blog-slider__button" href="2024/08/01/frontEnd-vue2/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/08/02/algorithm-数组/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_2.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-02</span><a class="blog-slider__title" href="2024/08/02/algorithm-数组/" alt="">数组篇</a><div class="blog-slider__text">代码随想录 - 数组篇</div><a class="blog-slider__button" href="2024/08/02/algorithm-数组/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/08/02/algorithm-hot100/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_10.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-02</span><a class="blog-slider__title" href="2024/08/02/algorithm-hot100/" alt="">hot100</a><div class="blog-slider__text">LeetCode - hot100</div><a class="blog-slider__button" href="2024/08/02/algorithm-hot100/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/08/02/algorithm-字符串/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_4.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-02</span><a class="blog-slider__title" href="2024/08/02/algorithm-字符串/" alt="">字符串篇</a><div class="blog-slider__text">代码随想录 - 字符串篇</div><a class="blog-slider__button" href="2024/08/02/algorithm-字符串/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
