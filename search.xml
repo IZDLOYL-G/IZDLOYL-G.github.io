@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>前端八股</title>
+      <link href="/2024/08/29/interview-%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1/"/>
+      <url>/2024/08/29/interview-%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h2 id="DOCUTYPE-作用"><a href="#DOCUTYPE-作用" class="headerlink" title="DOCUTYPE 作用"></a>DOCUTYPE 作用</h2><p><code>DOCTYPE</code>目的是告诉浏览器（解析器）应该以什么样（<code>html</code>或<code>xhtml</code>）的文档类型定义来解析文档，不同的渲染模式会影响浏览器对 CSS 代码甚⾄ JavaScript 脚本的解析。且它必须声明在 HTML ⽂档的第⼀⾏。</p><p>浏览器渲染页面的两种模式（可通过<code>document.compatMode</code>获取）：</p><ul><li><strong>CSS1Compat：标准模式（Strick mode）</strong>，默认模式，浏览器使用 W3C 的标准解析渲染页面。在标准模式中，浏览器以其支持的最高标准呈现页面。</li><li><strong>BackCompat：怪异模式(混杂模式)(Quick mode)</strong>，浏览器使用自己的怪异模式解析渲染页面。在怪异模式中，页面以一种比较宽松的向后兼容的方式显示。</li></ul><h2 id="html-语义化"><a href="#html-语义化" class="headerlink" title="html 语义化"></a>html 语义化</h2><p>语义化是指根据 <em>内容</em> 的结构化（内容语义化），选择 <em>合适的标签</em>（代码语义化）。</p><p>语义化的优点如下：</p><ul><li>增强可读性，结构清晰，便于开发与维护。</li><li>对机器友好，文字表现力丰富，更适合搜索引擎的爬虫爬取有效信息，有利于 SEO。</li><li>方便解析，可用于智能分析</li><li>在没有 CSS 样式下，页面也能呈现很好地内容结构、代码结构</li></ul><p>常见的语义化标签：<code>header</code>、<code>nav</code>、<code>main</code>、<code>footer</code>……</p><h2 id="meta-标签"><a href="#meta-标签" class="headerlink" title="meta 标签"></a>meta 标签</h2><p><code>meta</code> 标签由 <code>name</code> 和 <code>content</code> 属性定义，<strong>用来描述网页文档的属性</strong>，比如网页的作者，网页描述，关键词等。</p><p>作用有：搜索引擎优化(SEO)，定义页面使用语言，自动刷新并指向新的页面，实现网页转换时的动态效果，控制页面缓冲，网页定级评价，控制网页显示的窗口等。</p><p>meta 分类：</p><ol><li>页面描述信息（name）：常用的选项有 Keywords(关键字)，description(网站内容描述)，author(作者)，robots(机器人向导)等。</li><li>HTTP 标题信息（<code>http-equiv</code>)：可用于代替 name 项，常用的选项有 Expires(期限)，Pragma(cache 模式)，Refresh(刷新)，Set-Cookie(cookie 设定)，Window-target(显示窗口的设定)，content-Type(显示字符集的设定)等。</li><li>content 项：根据 name 项或 http-equiv 项的定义来决定此项填写什么样的字符串</li></ol><h2 id="HTML5-特性"><a href="#HTML5-特性" class="headerlink" title="HTML5 特性"></a>HTML5 特性</h2><p><strong>新增</strong>：</p><ul><li>新的选择器 document.querySelector、document.querySelectorAl!</li><li>媒体播放的 video 和 audio 标签</li><li>以前用的 flash 实现</li><li>本地存储 localStorage 和 sessionStorage</li><li>浏览器通知 Notifcations</li><li>语义化标签，例如 header，nav，footer，section，article 等标签</li><li>地理位置 Geolocation</li><li>鉴于隐私性，除非用户统一，否则不可获取用户地理位置信息</li><li>离线应用 manifest</li><li>全双工通信协议 websocket</li><li>浏览器历史对象 history</li><li>多任务处理 webworker</li><li>运行在后台的 JS，独立于其他脚本，不影响性能</li><li>拖拽相关 API</li><li>增强表单控件 url，date，time，email，calendar，search</li><li>页面可见性改变事件 visibilitychange</li><li>跨窗口通信 PostMessage</li><li>表单 FormData 对象</li><li>canvas+SVG</li></ul><p><strong>移除的元素有：</strong></p><ul><li>纯表现的元素：basefont，big，center，font, s，strike，tt，u;</li><li>对可用性产生负面影响的元素：frame，frameset，noframes；</li></ul><h2 id="src-和-href-的区别"><a href="#src-和-href-的区别" class="headerlink" title="src 和 href 的区别"></a>src 和 href 的区别</h2><p><code>src</code>和<code>href</code>都是<strong>用来引用外部的资源</strong>，它们的区别如下：</p><ul><li><strong><code>src</code>：</strong>表示对资源的引用，它指向的内容会 <em>嵌入</em> 到当前标签所在的位置。当浏览器解析到该元素时，会暂停其他资源的下载和处理，直到将该资源加载、编译、执⾏完毕，所以⼀般<code>js</code>脚本会放在页面底部。</li><li><strong><code>href</code>：</strong>表示超文本引用，它指向一些网络资源，建立和当前元素或本文档的 <em>链接</em> 关系。当浏览器识别到它他指向的⽂件时，就会并⾏下载资源，不会停⽌对当前⽂档的处理。</li></ul><h2 id="行内元素、块级元素、-空-void-元素"><a href="#行内元素、块级元素、-空-void-元素" class="headerlink" title="行内元素、块级元素、 空(void)元素"></a>行内元素、块级元素、 空(void)元素</h2><ul><li>行内元素有：<code>a b span img input select strong</code>； 和其它元素都在一行上</li><li>块级元素有：<code>div ul ol li dl dt dd h1 h2 h3 h4 h5 h6 p</code>； 总在新行上开始，占据一整行</li></ul><p>空元素，即没有内容的 HTML 元素。空元素是在开始标签中关闭的，也就是空元素没有闭合标签：</p><ul><li>常见的有：<code>&lt;br&gt;</code>、<code>&lt;hr&gt;</code>、<code>&lt;img&gt;</code>、<code>&lt;input&gt;</code>、<code>&lt;link&gt;</code>、<code>&lt;meta&gt;</code>；</li><li>鲜见的有：<code>&lt;area&gt;</code>、<code>&lt;base&gt;</code>、<code>&lt;col&gt;</code>、<code>&lt;colgroup&gt;</code>、<code>&lt;command&gt;</code>、<code>&lt;embed&gt;</code>、<code>&lt;keygen&gt;</code>、<code>&lt;param&gt;</code>、<code>&lt;source&gt;</code>、<code>&lt;track&gt;</code>、<code>&lt;wbr&gt;</code>。</li></ul><p>行内元素和块级元素的转换：<code>display: block   display: inline   display: inline-block</code></p><h2 id="常见的图片格式"><a href="#常见的图片格式" class="headerlink" title="常见的图片格式"></a>常见的图片格式</h2><ol><li><code>gif</code> - 文件小，只支持 256 种颜色支持动画</li><li><code>jpg</code> - 色彩丰富，反复保存图片质量下降</li><li><code>png</code> - 无损压缩，适合 logo/icon/透明图</li><li><code>webp</code> - 有以上格式的所有优点，但浏览器兼容性相对不好</li></ol><h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h2><p>iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。</p><p><strong>优点：</strong></p><ul><li>用来加载速度较慢的内容（如广告）</li><li>可以使脚本可以并行下载</li><li>可以实现跨子域通信</li></ul><p><strong>缺点：</strong></p><ul><li>iframe 会阻塞主页面的 onload 事件</li><li>无法被一些搜索引擎索识别</li><li>会产生很多页面，不容易管理</li></ul><h2 id="script-标签中-defer-和-async-的区别"><a href="#script-标签中-defer-和-async-的区别" class="headerlink" title="script 标签中 defer 和 async 的区别"></a>script 标签中 defer 和 async 的区别</h2><p><code>defer</code>和<code>async</code>用于在不阻塞页面文档解析的前提下，控制脚本的加载和执行。</p><p>下图可以直观的看出三者之间的区别：</p><p><img src="https://atts.w3cschool.cn/attachments/image/20220906/1662456451429876.png" alt="img"></p><p>其中蓝色代表<code>js</code>脚本网络加载时间，红色代表<code>js</code>脚本执行时间，绿色代表<code>html</code>解析。</p><p>在上述过程中，脚本文件的下载和执行是和文档解析同步的，容易造成页面卡顿影响用户体验。</p><p><strong><code>defer</code> 和 <code>async</code>属性都是去异步加载外部的<code>JS</code>脚本文件，都不会阻塞页面的解析</strong>，其区别如下：</p><ul><li><code>async</code>表示异步加载，后续文档的加载和渲染与 JS 脚本加载和执行并行进行，脚本文件一旦加载完成，会立即执行。<strong><em>无法预测每个脚本的下载和执行时间顺序，谁先下载好谁执行</em></strong></li><li><code>defer</code>表示延迟加载，后续文档的加载和 JS 脚本加载并行进行，但 JS 脚本的执行需要等待文档所有元素解析完之后，在<code>load</code>和<code>DOMContentLoaded</code>事件之前执行，有顺序。</li></ul><h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h2 id="CSS-基础"><a href="#CSS-基础" class="headerlink" title="CSS 基础"></a>CSS 基础</h2><h3 id="为什么要初始化-CSS-样式"><a href="#为什么要初始化-CSS-样式" class="headerlink" title="为什么要初始化 CSS 样式"></a>为什么要初始化 CSS 样式</h3><p>消除浏览器之间的差异，提高兼容性；提高代码质量，便于统一管理</p><h3 id="伪元素和伪类"><a href="#伪元素和伪类" class="headerlink" title="伪元素和伪类"></a>伪元素和伪类</h3><p><code>:</code>用于伪类，<code>::</code>用于伪元素。<code>:before</code>以一个子元素存在，定义的一个伪元素，只存在页面中。<br><strong>伪元素</strong>：对选择元素的 <em>指定部分</em> 进行修改样式。在内容元素的前后插入额外的元素或样式，但是这些元素实际上并不在文档中生成。它们只在外部显示可见，但不会在文档的源代码中找到它们，因此，称为“伪”元素。常见的有<code>::before</code>，<code>::after</code>，<code>::first-line</code>等<br><strong>伪类</strong>：对选择元素的 <em>特殊状态</em> 进行修改样式，常见的有<code>:hover</code>，<code>:active</code>，<code>:focus</code>等</p><h3 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h3><ol><li><code>px</code>：固定像素单位</li><li><code>%</code>：元素宽高随浏览器改变而改变，实现响应式，一般子元素的百分比相对于直接父元素</li><li><code>em</code>：作为<code>font-size</code>的单位时代表父元素的字体大小按比例计算值，其它则相对自身字体大小按比例计算值</li><li><code>rem</code>：CSS3 新增，相对于根元素字体大小按比例计算值</li><li><code>vw</code>：相对于视图窗口宽度<code>100vw</code> <code>vh</code>：相对于视图窗口高度<code>100vh</code> <code>vm</code></li><li><code>rpx</code>：微信小程序独有，解决屏幕自适应尺寸单位</li></ol><h3 id="block-inline-inline-block"><a href="#block-inline-inline-block" class="headerlink" title="block, inline, inline-block"></a>block, inline, inline-block</h3><p>块级元素：自动占据一行，可以设置宽高。常见的有 div，p，h1-h6，ul，li，form，table<br>行内元素：占据一行的一小部分，多个行内元素水平排版，无法设置宽高。常见的有 span，img，a<br>行内块级元素：跟行内元素类似，不过可以设置宽高。常见的有 button，img，input，select，label<br>空元素：img，br，input，link，meta</p><h3 id="回流和重绘"><a href="#回流和重绘" class="headerlink" title="回流和重绘"></a>回流和重绘</h3><ul><li>回流：布局引擎会根据各种样式计算每个盒子在页面上的大小与位置</li><li>重绘：当计算好盒模型的位置、大小及其他属性后，浏览器根据每个盒子特性进行绘制</li></ul><h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><h2 id="定位与浮动"><a href="#定位与浮动" class="headerlink" title="定位与浮动"></a>定位与浮动</h2><h2 id="场景应用"><a href="#场景应用" class="headerlink" title="场景应用"></a>场景应用</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 面试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前端八股 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>项目八股</title>
       <link href="/2024/08/27/interview-%E6%80%BB%E7%BB%93/"/>
       <url>/2024/08/27/interview-%E6%80%BB%E7%BB%93/</url>
@@ -435,17 +460,6 @@
     
     
     <entry>
-      <title></title>
-      <link href="/js/universe.js"/>
-      <url>/js/universe.js</url>
-      
-        <content type="html"><![CDATA[function dark() {window.requestAnimationFrame=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.msRequestAnimationFrame;var n,e,i,h,t=.05,s=document.getElementById("universe"),o=!0,a="180,184,240",r="226,225,142",d="226,225,224",c=[];function f(){n=window.innerWidth,e=window.innerHeight,i=.216*n,s.setAttribute("width",n),s.setAttribute("height",e)}function u(){h.clearRect(0,0,n,e);for(var t=c.length,i=0;i<t;i++){var s=c[i];s.move(),s.fadeIn(),s.fadeOut(),s.draw()}}function y(){this.reset=function(){this.giant=m(3),this.comet=!this.giant&&!o&&m(10),this.x=l(0,n-10),this.y=l(0,e),this.r=l(1.1,2.6),this.dx=l(t,6*t)+(this.comet+1-1)*t*l(50,120)+2*t,this.dy=-l(t,6*t)-(this.comet+1-1)*t*l(50,120),this.fadingOut=null,this.fadingIn=!0,this.opacity=0,this.opacityTresh=l(.2,1-.4*(this.comet+1-1)),this.do=l(5e-4,.002)+.001*(this.comet+1-1)},this.fadeIn=function(){this.fadingIn&&(this.fadingIn=!(this.opacity>this.opacityTresh),this.opacity+=this.do)},this.fadeOut=function(){this.fadingOut&&(this.fadingOut=!(this.opacity<0),this.opacity-=this.do/2,(this.x>n||this.y<0)&&(this.fadingOut=!1,this.reset()))},this.draw=function(){if(h.beginPath(),this.giant)h.fillStyle="rgba("+a+","+this.opacity+")",h.arc(this.x,this.y,2,0,2*Math.PI,!1);else if(this.comet){h.fillStyle="rgba("+d+","+this.opacity+")",h.arc(this.x,this.y,1.5,0,2*Math.PI,!1);for(var t=0;t<30;t++)h.fillStyle="rgba("+d+","+(this.opacity-this.opacity/20*t)+")",h.rect(this.x-this.dx/4*t,this.y-this.dy/4*t-2,2,2),h.fill()}else h.fillStyle="rgba("+r+","+this.opacity+")",h.rect(this.x,this.y,this.r,this.r);h.closePath(),h.fill()},this.move=function(){this.x+=this.dx,this.y+=this.dy,!1===this.fadingOut&&this.reset(),(this.x>n-n/4||this.y<0)&&(this.fadingOut=!0)},setTimeout(function(){o=!1},50)}function m(t){return Math.floor(1e3*Math.random())+1<10*t}function l(t,i){return Math.random()*(i-t)+t}f(),window.addEventListener("resize",f,!1),function(){h=s.getContext("2d");for(var t=0;t<i;t++)c[t]=new y,c[t].reset();u()}(),function t(){document.getElementsByTagName('html')[0].getAttribute('data-theme')=='dark'&&u(),window.requestAnimationFrame(t)}()};dark()]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>link</title>
       <link href="/link/index.html"/>
       <url>/link/index.html</url>
@@ -457,9 +471,9 @@
     
     
     <entry>
-      <title>电影</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
+      <title>gallery</title>
+      <link href="/gallery/index.html"/>
+      <url>/gallery/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -468,9 +482,20 @@
     
     
     <entry>
-      <title>gallery</title>
-      <link href="/gallery/index.html"/>
-      <url>/gallery/index.html</url>
+      <title></title>
+      <link href="/js/universe.js"/>
+      <url>/js/universe.js</url>
+      
+        <content type="html"><![CDATA[function dark() {window.requestAnimationFrame=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.msRequestAnimationFrame;var n,e,i,h,t=.05,s=document.getElementById("universe"),o=!0,a="180,184,240",r="226,225,142",d="226,225,224",c=[];function f(){n=window.innerWidth,e=window.innerHeight,i=.216*n,s.setAttribute("width",n),s.setAttribute("height",e)}function u(){h.clearRect(0,0,n,e);for(var t=c.length,i=0;i<t;i++){var s=c[i];s.move(),s.fadeIn(),s.fadeOut(),s.draw()}}function y(){this.reset=function(){this.giant=m(3),this.comet=!this.giant&&!o&&m(10),this.x=l(0,n-10),this.y=l(0,e),this.r=l(1.1,2.6),this.dx=l(t,6*t)+(this.comet+1-1)*t*l(50,120)+2*t,this.dy=-l(t,6*t)-(this.comet+1-1)*t*l(50,120),this.fadingOut=null,this.fadingIn=!0,this.opacity=0,this.opacityTresh=l(.2,1-.4*(this.comet+1-1)),this.do=l(5e-4,.002)+.001*(this.comet+1-1)},this.fadeIn=function(){this.fadingIn&&(this.fadingIn=!(this.opacity>this.opacityTresh),this.opacity+=this.do)},this.fadeOut=function(){this.fadingOut&&(this.fadingOut=!(this.opacity<0),this.opacity-=this.do/2,(this.x>n||this.y<0)&&(this.fadingOut=!1,this.reset()))},this.draw=function(){if(h.beginPath(),this.giant)h.fillStyle="rgba("+a+","+this.opacity+")",h.arc(this.x,this.y,2,0,2*Math.PI,!1);else if(this.comet){h.fillStyle="rgba("+d+","+this.opacity+")",h.arc(this.x,this.y,1.5,0,2*Math.PI,!1);for(var t=0;t<30;t++)h.fillStyle="rgba("+d+","+(this.opacity-this.opacity/20*t)+")",h.rect(this.x-this.dx/4*t,this.y-this.dy/4*t-2,2,2),h.fill()}else h.fillStyle="rgba("+r+","+this.opacity+")",h.rect(this.x,this.y,this.r,this.r);h.closePath(),h.fill()},this.move=function(){this.x+=this.dx,this.y+=this.dy,!1===this.fadingOut&&this.reset(),(this.x>n-n/4||this.y<0)&&(this.fadingOut=!0)},setTimeout(function(){o=!1},50)}function m(t){return Math.floor(1e3*Math.random())+1<10*t}function l(t,i){return Math.random()*(i-t)+t}f(),window.addEventListener("resize",f,!1),function(){h=s.getContext("2d");for(var t=0;t<i;t++)c[t]=new y,c[t].reset();u()}(),function t(){document.getElementsByTagName('html')[0].getAttribute('data-theme')=='dark'&&u(),window.requestAnimationFrame(t)}()};dark()]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>电影</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
